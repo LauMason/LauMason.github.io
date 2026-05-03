@@ -1,83 +1,1084 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Liu Minxu</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Liu Minxu | ZJU PhD 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0f14;
+    --bg2: #13161e;
+    --bg3: #1a1e28;
+    --surface: #1e2330;
+    --border: rgba(255,255,255,0.07);
+    --accent: #6ee7f7;
+    --accent2: #a78bfa;
+    --accent3: #f472b6;
+    --text: #e8ecf4;
+    --text2: #8b95a8;
+    --text3: #5a6174;
+    --tag-bg: rgba(110,231,247,0.08);
+    --tag-border: rgba(110,231,247,0.2);
+    --green: #4ade80;
+    --yellow: #fbbf24;
+    --serif: 'DM Serif Display', serif;
+    --sans: 'DM Sans', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
 
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.4;
+  }
+
+  /* ── GLOW BLOB ── */
+  .glow-blob {
+    position: fixed;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(110,231,247,0.04) 0%, transparent 70%);
+    pointer-events: none;
+    top: -100px; right: -100px;
+    animation: blobMove 20s ease-in-out infinite alternate;
+  }
+  @keyframes blobMove {
+    0% { transform: translate(0,0) scale(1); }
+    100% { transform: translate(-80px, 120px) scale(1.15); }
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 0 clamp(20px, 5vw, 80px);
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(13,15,20,0.8);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    color: var(--accent);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--text2);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ── MAIN LAYOUT ── */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 5vw, 60px);
+  }
+
+  /* ── HERO ── */
+  #hero {
+    padding-top: 120px;
+    padding-bottom: 80px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 60px;
+    align-items: start;
+  }
+  .hero-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    opacity: 0.8;
+  }
+  h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, var(--text) 40%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-affil {
+    font-size: 14px;
+    color: var(--text2);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .hero-affil a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .hero-affil a:hover { text-decoration: underline; }
+  .sep { color: var(--text3); }
+  .hero-bio {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--text2);
+    max-width: 620px;
+    margin-bottom: 32px;
+  }
+  .hero-bio strong, .hero-bio b {
+    color: var(--text);
+    font-weight: 600;
+  }
+  .hero-bio a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(110,231,247,0.3);
+    transition: border-color 0.2s;
+  }
+  .hero-bio a:hover { border-color: var(--accent); }
+
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: rgba(74,222,128,0.08);
+    border: 1px solid rgba(74,222,128,0.25);
+    border-radius: 100px;
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--green);
+    margin-bottom: 32px;
+  }
+  .status-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--green);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.8); }
+  }
+
+  .hero-links {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 9px 18px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s;
+    letter-spacing: 0.02em;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #0d0f14;
+  }
+  .btn-primary:hover { background: #98f0ff; transform: translateY(-1px); }
+  .btn-outline {
+    border: 1px solid var(--border);
+    color: var(--text2);
+    background: var(--surface);
+  }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+
+  /* Profile photo */
+  .hero-photo {
+    position: relative;
+    flex-shrink: 0;
+  }
+  .hero-photo img {
+    width: 160px;
+    height: 160px;
+    border-radius: 20px;
+    object-fit: cover;
+    display: block;
+    border: 2px solid var(--border);
+    filter: grayscale(20%);
+    transition: filter 0.3s;
+  }
+  .hero-photo:hover img { filter: grayscale(0%); }
+  .hero-photo::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 22px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    z-index: -1;
+    opacity: 0.5;
+  }
+  .hero-initials {
+    width: 160px;
+    height: 160px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, var(--bg3), var(--surface));
+    border: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--serif);
+    font-size: 3rem;
+    color: var(--accent);
+    position: relative;
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 70px 0;
+    border-top: 1px solid var(--border);
+  }
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 40px;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: 1.9rem;
+    font-weight: 400;
+    color: var(--text);
+  }
+  .section-count {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text3);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── NEWS ── */
+  .news-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .news-item {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 20px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: start;
+  }
+  .news-item:first-child { border-top: 1px solid var(--border); }
+  .news-date {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text3);
+    padding-top: 2px;
+    flex-shrink: 0;
+  }
+  .news-content { font-size: 14px; color: var(--text2); line-height: 1.6; }
+  .news-content a { color: var(--accent); text-decoration: none; }
+  .news-content a:hover { text-decoration: underline; }
+  .news-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    font-family: var(--mono);
+    letter-spacing: 0.05em;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+  .badge-accepted { background: rgba(74,222,128,0.15); color: var(--green); border: 1px solid rgba(74,222,128,0.3); }
+  .badge-review { background: rgba(251,191,36,0.1); color: var(--yellow); border: 1px solid rgba(251,191,36,0.25); }
+
+  /* ── RESEARCH AREA ── */
+  .research-area {
+    margin-bottom: 52px;
+  }
+  .research-area-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+  .area-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text3);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .area-name {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .area-divider {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  .area-count {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text3);
+  }
+
+  /* ── PAPER CARD ── */
+  .paper-card {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 24px;
+    padding: 24px;
+    border-radius: 12px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    margin-bottom: 14px;
+    transition: all 0.25s;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    overflow: hidden;
+  }
+  .paper-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, var(--accent), var(--accent2));
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+  .paper-card:hover {
+    border-color: rgba(110,231,247,0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  }
+  .paper-card:hover::before { opacity: 1; }
+
+  .paper-thumb {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--bg3), var(--surface));
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    border: 1px solid var(--border);
+  }
+  .paper-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+  .venue-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 5px;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+  }
+  .venue-ccfa { background: rgba(167,139,250,0.15); color: var(--accent2); border: 1px solid rgba(167,139,250,0.3); }
+  .venue-q1 { background: rgba(244,114,182,0.1); color: var(--accent3); border: 1px solid rgba(244,114,182,0.25); }
+  .venue-ccfb { background: rgba(110,231,247,0.08); color: var(--accent); border: 1px solid var(--tag-border); }
+  .paper-status {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 4px;
+  }
+  .paper-number {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text3);
+    letter-spacing: 0.05em;
+  }
+  .paper-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.4;
+    margin-bottom: 6px;
+    transition: color 0.2s;
+  }
+  .paper-card:hover .paper-title { color: var(--accent); }
+  .paper-authors {
+    font-size: 13px;
+    color: var(--text2);
+    margin-bottom: 8px;
+    line-height: 1.5;
+  }
+  .paper-authors strong { color: var(--accent); font-weight: 600; }
+  .paper-venue-full {
+    font-size: 12.5px;
+    color: var(--text3);
+    font-style: italic;
+    margin-bottom: 10px;
+  }
+  .paper-desc {
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+  .paper-links {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .paper-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    border-radius: 5px;
+    font-size: 11.5px;
+    font-weight: 500;
+    text-decoration: none;
+    font-family: var(--mono);
+    transition: all 0.2s;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    color: var(--text2);
+  }
+  .paper-link:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ── EDUCATION ── */
+  .edu-list { display: flex; flex-direction: column; gap: 20px; }
+  .edu-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 20px;
+    padding: 20px 24px;
+    border-radius: 12px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    align-items: start;
+  }
+  .edu-icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--bg3), var(--surface));
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+  }
+  .edu-school {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 2px;
+  }
+  .edu-degree { font-size: 13.5px; color: var(--text2); margin-bottom: 4px; }
+  .edu-meta { font-family: var(--mono); font-size: 11.5px; color: var(--text3); }
+  .edu-period { float: right; }
+
+  /* ── AWARDS ── */
+  .awards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 10px;
+  }
+  .award-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 18px;
+    border-radius: 10px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    transition: border-color 0.2s;
+  }
+  .award-item:hover { border-color: rgba(110,231,247,0.2); }
+  .award-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 2px; }
+  .award-name { font-size: 13.5px; font-weight: 500; color: var(--text); line-height: 1.4; }
+  .award-date { font-family: var(--mono); font-size: 11px; color: var(--text3); margin-top: 3px; }
+  .award-level {
+    font-size: 11px;
+    padding: 2px 6px;
+    border-radius: 3px;
+    background: rgba(110,231,247,0.07);
+    border: 1px solid var(--tag-border);
+    color: var(--accent);
+    font-family: var(--mono);
+    margin-left: 6px;
+    white-space: nowrap;
+  }
+
+  /* ── SKILLS ── */
+  .skills-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+  .skill-tag {
+    padding: 5px 13px;
+    border-radius: 100px;
+    font-size: 12.5px;
+    font-weight: 500;
+    background: var(--tag-bg);
+    border: 1px solid var(--tag-border);
+    color: var(--accent);
+    font-family: var(--mono);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 40px 0;
+    text-align: center;
+    font-size: 12.5px;
+    color: var(--text3);
+    font-family: var(--mono);
+  }
+  footer a { color: var(--text3); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+
+  /* ── SCROLL ANIMATIONS ── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    #hero { grid-template-columns: 1fr; }
+    .hero-photo { display: none; }
+    .paper-card { grid-template-columns: 1fr; }
+    .paper-thumb { max-width: 200px; }
+    .news-item { grid-template-columns: 1fr; gap: 4px; }
+    .awards-grid { grid-template-columns: 1fr; }
+    nav .nav-links { display: none; }
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--surface); border-radius: 2px; }
+</style>
+</head>
 <body>
+
+<div class="glow-blob"></div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">Liu Minxu 刘旻栩</a>
+  <ul class="nav-links">
+    <li><a href="#news">News</a></li>
+    <li><a href="#publications">Research</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#awards">Awards</a></li>
+  </ul>
+</nav>
 
 <div class="container">
 
-    <h1>Liu Minxu</h1>
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-left">
+      <div class="hero-label">// Academic Portfolio</div>
+      <h1>Liu Minxu</h1>
+      <div class="hero-affil">
+        <span>M.Eng. Student</span>
+        <span class="sep">·</span>
+        <a href="https://www.nuaa.edu.cn" target="_blank">Nanjing University of Aeronautics and Astronautics</a>
+        <span class="sep">·</span>
+        <span>浙江省舟山市</span>
+      </div>
 
-    <p>
-        Master's Student at Nanjing University of Aeronautics and Astronautics<br>
-        Email: liuminxu@nuaa.edu.cn
-    </p>
+      <div class="status-badge">
+        <div class="status-dot"></div>
+        PhD Admitted · Zhejiang University, School of AI · Fall 2026
+      </div>
 
-    <p>
-        I am currently working on <b>EEG-based visual decoding</b>, focusing on bridging 
-        brain signals and vision-language models. My research interests include 
-        deep learning, multimodal learning, neural decoding, and affective computing.
-    </p>
+      <p class="hero-bio">
+        Hello! I'm Minxu Liu, a Master's student in Electronic Information (Computer Technology) at <strong>NUAA</strong>, and incoming PhD student at the <strong><a href="https://www.zju.edu.cn" target="_blank">Zhejiang University</a> School of Artificial Intelligence</strong> (Fall 2026). My research sits at the intersection of <strong>Deep Learning</strong>, <strong>Multimodal Learning</strong>, <strong>Neural Visual Decoding</strong>, and <strong>Affective Computing</strong>.
+        <br><br>
+        I focus on decoding the human visual cortex from <strong>EEG signals</strong> — recovering what people see from brain activity — and on robust <strong>multi-modal emotion recognition</strong> across individuals. My work has been accepted at top venues including <a href="#pub-vieeg">ICML 2026</a> (CCF-A) and published in <strong>IEEE Transactions on Cognitive and Developmental Systems</strong> (JCR Q1).
+      </p>
 
-    <hr>
+      <div class="hero-links">
+        <a class="btn btn-primary" href="mailto:liuminxu@nuaa.edu.com">
+          ✉ liuminxu@nuaa.edu.com
+        </a>
+        <a class="btn btn-outline" href="mailto:liuminxu119@163.com">
+          ✉ 163 Mail
+        </a>
+        <a class="btn btn-outline" href="https://arxiv.org/search/?searchtype=author&query=Minxu+Liu" target="_blank">
+          arxiv ↗
+        </a>
+        <a class="btn btn-outline" href="tel:+8615157992209">
+          📞 +86-151-5799-2209
+        </a>
+      </div>
+    </div>
 
-    <h2>Publications</h2>
+    <div class="hero-photo">
+      <div class="hero-initials">旻</div>
+    </div>
+  </section>
 
-    <ul>
-        <li>
-            <b>ViEEG: Hierarchical Visual Neural Representation for EEG Brain Decoding</b><br>
-            ICML 2026 (Accepted)<br>
-            Zero-shot retrieval: 26% → 40%
-        </li>
+  <!-- NEWS -->
+  <section id="news" class="fade-in">
+    <div class="section-header">
+      <h2 class="section-title">News</h2>
+    </div>
+    <div class="news-list">
+      <div class="news-item">
+        <span class="news-date">2026/05</span>
+        <div class="news-content">
+          <span class="news-badge badge-accepted">🎉 Admitted</span>
+          Admitted as a PhD student to the <strong>School of Artificial Intelligence, <a href="https://www.zju.edu.cn" target="_blank">Zhejiang University</a></strong>. Enrolling Fall 2026.
+        </div>
+      </div>
+      <div class="news-item">
+        <span class="news-date">2025/04</span>
+        <div class="news-content">
+          <span class="news-badge badge-accepted">Accepted</span>
+          Paper <em>ViEEG: Hierarchical Visual Neural Representation for EEG Brain Decoding</em> accepted at <a href="#pub-vieeg">ICML 2026</a> (CCF-A). Preprint: <a href="https://arxiv.org/abs/2505.12408" target="_blank">arXiv:2505.12408</a>
+        </div>
+      </div>
+      <div class="news-item">
+        <span class="news-date">2025/08</span>
+        <div class="news-content">
+          <span class="news-badge badge-review">Submitted</span>
+          Paper <em>VISTA: Dynamic Spatial-Temporal Asynchrony for EEG Visual Decoding</em> submitted to <a href="#pub-vista">KDD 2026</a> (CCF-A).
+        </div>
+      </div>
+      <div class="news-item">
+        <span class="news-date">2024/11</span>
+        <div class="news-content">
+          <span class="news-badge badge-accepted">Accepted</span>
+          Paper on <em>Non-Depersonalized Disentanglement for Cross-Subject Emotion Recognition</em> accepted at <a href="#pub-icme">ICME 2026</a> (CCF-B).
+        </div>
+      </div>
+      <div class="news-item">
+        <span class="news-date">2024/04</span>
+        <div class="news-content">
+          <span class="news-badge badge-accepted">Accepted</span>
+          Paper <em>Multi-Modal Discriminative Network for Emotion Recognition across Individuals</em> accepted at <a href="#pub-tcds">IEEE TCDS</a> (JCR Q1, IF: 5.0). <a href="https://ieeexplore.ieee.org/abstract/document/10930808" target="_blank">IEEE Xplore ↗</a>
+        </div>
+      </div>
+      <div class="news-item">
+        <span class="news-date">2026/04</span>
+        <div class="news-content">
+          🎓 Awarded <strong>"Outstanding Graduate Student"</strong> by the College of Computer Science and Technology, NUAA.
+        </div>
+      </div>
+      <div class="news-item">
+        <span class="news-date">2025/10</span>
+        <div class="news-content">
+          🏆 Awarded <strong>NUAA First-Class Graduate Scholarship</strong> for the 2025–2026 academic year (third consecutive year).
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <li>
-            <b>Multi-Modal Discriminative Network for Emotion Recognition</b><br>
-            IEEE TCDS 2025
-        </li>
+  <!-- PUBLICATIONS -->
+  <section id="publications" class="fade-in">
+    <div class="section-header">
+      <h2 class="section-title">Research Highlights</h2>
+      <span class="section-count">6 papers · 3 accepted · 3 under review</span>
+    </div>
 
-        <li>
-            <b>Non-Depersonalized Disentanglement for Cross-Subject Emotion Recognition</b><br>
-            ICME 2026
-        </li>
-    </ul>
+    <!-- Area 1: Neural Visual Decoding -->
+    <div class="research-area">
+      <div class="research-area-header">
+        <span class="area-label">Research Area</span>
+        <span class="area-name">Neural Visual Decoding (EEG → Image)</span>
+        <div class="area-divider"></div>
+        <span class="area-count">3 papers</span>
+      </div>
 
-    <h3>Under Review</h3>
+      <div class="paper-card" id="pub-vieeg">
+        <div class="paper-thumb">🧠</div>
+        <div class="paper-body">
+          <div class="paper-meta">
+            <span class="venue-badge venue-ccfa">ICML 2026</span>
+            <span class="paper-status badge-accepted">Accepted · CCF-A</span>
+            <span class="paper-number">#01</span>
+          </div>
+          <div class="paper-title">ViEEG: Hierarchical Visual Neural Representation for EEG Brain Decoding</div>
+          <div class="paper-authors"><strong>Liu Minxu</strong> et al.</div>
+          <div class="paper-venue-full">International Conference on Machine Learning (ICML) 2026 — Dec 2024 → Apr 2025</div>
+          <div class="paper-desc">
+            Semantically segments visual images into a contour → foreground → full-image hierarchy to restore the human brain's layered visual understanding. Reconstructs hierarchical visual information via diffusion models. Achieves a landmark improvement on the large-scale public neural signal decoding dataset (zero-shot image retrieval: 26% → 40%).
+          </div>
+          <div class="paper-links">
+            <a class="paper-link" href="https://arxiv.org/abs/2505.12408" target="_blank">📄 arXiv</a>
+          </div>
+        </div>
+      </div>
 
-    <ul>
-        <li>VISTA: Dynamic Spatial-Temporal Asynchrony for EEG Visual Decoding (KDD 2026)</li>
-        <li>EEG Spatial-Temporal Topology Network (IEEE TSMC)</li>
-        <li>Multi-Scale Topology Representation (IEEE TAFFC)</li>
-    </ul>
+      <div class="paper-card" id="pub-eeg-sttn">
+        <div class="paper-thumb">👁</div>
+        <div class="paper-body">
+          <div class="paper-meta">
+            <span class="venue-badge venue-q1">TSMCA — JCR Q1</span>
+            <span class="paper-status badge-review">Under Review · IF 8.7</span>
+            <span class="paper-number">#02</span>
+          </div>
+          <div class="paper-title">EEG Spatial-Temporal Topology Network for Brain Visual Decoding</div>
+          <div class="paper-authors"><strong>Liu Minxu</strong> et al.</div>
+          <div class="paper-venue-full">IEEE Transactions on Systems, Man, and Cybernetics: Systems — Jul 2024 → Dec 2024</div>
+          <div class="paper-desc">
+            Introduces topological connectivity to explicitly model brain topology strength when receiving visual stimuli. Proposes a feature-dimensionality-reduction-based soft alignment to narrow the heterogeneity between EEG and vision-language large model representations. Designs a task-oriented representation disentanglement module for simultaneous coarse-grained object recognition and fine-grained image reconstruction.
+          </div>
+        </div>
+      </div>
 
-    <hr>
+      <div class="paper-card" id="pub-vista">
+        <div class="paper-thumb">⚡</div>
+        <div class="paper-body">
+          <div class="paper-meta">
+            <span class="venue-badge venue-ccfa">KDD 2026</span>
+            <span class="paper-status badge-review">Under Review · CCF-A</span>
+            <span class="paper-number">#03</span>
+          </div>
+          <div class="paper-title">VISTA: Dynamic Spatial-Temporal Asynchrony for EEG Visual Decoding</div>
+          <div class="paper-authors"><strong>Liu Minxu</strong> et al.</div>
+          <div class="paper-venue-full">SIGKDD Conference on Knowledge Discovery and Data Mining (KDD) 2026 — Apr 2025 → Aug 2025</div>
+          <div class="paper-desc">
+            Disentangles visual-stimulus-evoked EEG fluctuations into fine-grained visual understanding and coarse-grained semantic understanding. Models the spatiotemporal dynamic asynchrony of visual and semantic modal information simultaneously in temporal and spatial dimensions, providing interpretability for EEG-based brain visual decoding.
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <h2>Education</h2>
+    <!-- Area 2: Affective Computing -->
+    <div class="research-area">
+      <div class="research-area-header">
+        <span class="area-label">Research Area</span>
+        <span class="area-name">Affective Computing & Emotion Recognition</span>
+        <div class="area-divider"></div>
+        <span class="area-count">3 papers</span>
+      </div>
 
-    <p>
-        M.S. in Computer Technology<br>
-        Nanjing University of Aeronautics and Astronautics, 2023 - Present
-    </p>
+      <div class="paper-card" id="pub-tcds">
+        <div class="paper-thumb">💡</div>
+        <div class="paper-body">
+          <div class="paper-meta">
+            <span class="venue-badge venue-q1">IEEE TCDS — JCR Q1</span>
+            <span class="paper-status badge-accepted">Published · IF 5.0</span>
+            <span class="paper-number">#04</span>
+          </div>
+          <div class="paper-title">Multi-Modal Discriminative Network for Emotion Recognition across Individuals</div>
+          <div class="paper-authors"><strong>Liu Minxu</strong> et al.</div>
+          <div class="paper-venue-full">IEEE Transactions on Cognitive and Developmental Systems 2025 — Oct 2023 → Apr 2024</div>
+          <div class="paper-desc">
+            Leverages attention and contrastive learning to mine heterogeneous and complementary representations in multimodal signals, fusing different representations for robust multimodal emotion recognition. Designs an embedded self-representation learning network using constrained block-diagonal matrices to facilitate invariant emotion representation mining across subjects.
+          </div>
+          <div class="paper-links">
+            <a class="paper-link" href="https://ieeexplore.ieee.org/abstract/document/10930808" target="_blank">🔗 IEEE Xplore</a>
+          </div>
+        </div>
+      </div>
 
-    <p>
-        B.S. in Software Engineering (Rank 5/99, GPA 3.74)<br>
-        Zhejiang University of Technology, 2019 - 2023
-    </p>
+      <div class="paper-card" id="pub-icme">
+        <div class="paper-thumb">🎭</div>
+        <div class="paper-body">
+          <div class="paper-meta">
+            <span class="venue-badge venue-ccfb">ICME 2026</span>
+            <span class="paper-status badge-accepted">Accepted · CCF-B</span>
+            <span class="paper-number">#05</span>
+          </div>
+          <div class="paper-title">Non-Depersonalized Disentanglement for Cross-Subject Emotion Recognition</div>
+          <div class="paper-authors"><strong>Liu Minxu</strong> et al.</div>
+          <div class="paper-venue-full">IEEE International Conference on Multimedia and Expo (ICME) 2026 — Jun 2024 → Nov 2024</div>
+          <div class="paper-desc">
+            Addresses the problem that marginal probability alignment in cross-subject tasks eliminates personalized emotional features. Designs an intra-domain and cross-domain invariant representation disentanglement module with separation constraints; optimizes spectral-spatial attention networks via topological connectivity.
+          </div>
+        </div>
+      </div>
 
-    <hr>
+      <div class="paper-card" id="pub-taffc">
+        <div class="paper-thumb">🔬</div>
+        <div class="paper-body">
+          <div class="paper-meta">
+            <span class="venue-badge venue-q1">TAFFC — JCR Q1</span>
+            <span class="paper-status badge-review">Under Review · IF 9.8</span>
+            <span class="paper-number">#06</span>
+          </div>
+          <div class="paper-title">Multi-Scale Topology Representation for Interpretable EEG Emotion Recognition</div>
+          <div class="paper-authors"><strong>Liu Minxu</strong> et al.</div>
+          <div class="paper-venue-full">IEEE Transactions on Affective Computing (TAFFC) — Jan 2024 → Jun 2024</div>
+          <div class="paper-desc">
+            Introduces expert-prior brain functional partitioning to construct multi-level graph neural networks, capturing multi-scale global brain region and local functional partition topological connectivity, learning biologically interpretable brain networks.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <h2>Awards</h2>
+  <!-- EDUCATION -->
+  <section id="education" class="fade-in">
+    <div class="section-header">
+      <h2 class="section-title">Education</h2>
+    </div>
+    <div class="edu-list">
+      <div class="edu-item" style="border-color: rgba(110,231,247,0.25); background: linear-gradient(135deg, var(--bg2), rgba(110,231,247,0.03));">
+        <div class="edu-icon">⭐</div>
+        <div>
+          <div class="edu-school">Zhejiang University (ZJU) <span style="color:var(--text3);font-size:12px;">浙江大学</span>
+            <span style="margin-left:10px;font-family:var(--mono);font-size:11px;padding:2px 8px;border-radius:4px;background:rgba(110,231,247,0.1);border:1px solid rgba(110,231,247,0.3);color:var(--accent);">拟录取</span>
+          </div>
+          <div class="edu-degree">Ph.D. · School of Artificial Intelligence (人工智能学院)</div>
+          <div class="edu-meta">2026 — (Incoming · Fall 2026)</div>
+        </div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-icon">🚀</div>
+        <div>
+          <div class="edu-school">Nanjing University of Aeronautics and Astronautics (NUAA) <span style="color:var(--text3);font-size:12px;">南京航空航天大学</span></div>
+          <div class="edu-degree">M.Eng. · Electronic Information (Computer Technology) · Admitted via Recommendation</div>
+          <div class="edu-meta">
+            2023 — Present
+            <span style="margin-left: 20px; color: var(--text2);">Research: Deep Learning · Multimodal Learning · Neural Visual Decoding · Affective Computing</span>
+          </div>
+          <div style="margin-top:8px; display:flex; gap:8px; flex-wrap:wrap;">
+            <span class="skill-tag">Role: Graduate Party Branch Secretary</span>
+            <span class="skill-tag">Tutor: Undergrad International College (Year 1)</span>
+          </div>
+        </div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-icon">🎓</div>
+        <div>
+          <div class="edu-school">Zhejiang University of Technology (ZJUT) <span style="color:var(--text3);font-size:12px;">浙江工业大学</span></div>
+          <div class="edu-degree">B.Eng. · Software Engineering</div>
+          <div class="edu-meta">
+            2019 — 2023
+            <span style="margin-left: 20px; color: var(--accent);">GPA: 3.74 / 4.0 · Ranked 5 / 99</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <ul>
-        <li>National Scholarship (Zhejiang Province)</li>
-        <li>Mathematical Contest in Modeling (International Meritorious Winner)</li>
-        <li>Graduate First-Class Scholarship (NUAA)</li>
-    </ul>
+  <!-- AWARDS -->
+  <section id="awards" class="fade-in">
+    <div class="section-header">
+      <h2 class="section-title">Awards & Honors</h2>
+      <span class="section-count">18 awards</span>
+    </div>
+    <div class="awards-grid">
+      <div class="award-item">
+        <span class="award-icon">🥇</span>
+        <div>
+          <div class="award-name">Outstanding Graduate Student — NUAA <span class="award-level">College</span></div>
+          <div class="award-date">2026.04</div>
+        </div>
+      </div>
+      <div class="award-item">
+        <span class="award-icon">🏆</span>
+        <div>
+          <div class="award-name">First-Class Graduate Scholarship — NUAA <span class="award-level">University</span></div>
+          <div class="award-date">2025.10 · 2024.10 · 2023.10 (3× consecutive)</div>
+        </div>
+      </div>
+      <div class="award-item">
+        <span class="award-icon">🏆</span>
+        <div>
+          <div class="award-name">Zhejiang Provincial Government Scholarship <span class="award-level">Province</span></div>
+          <div class="award-date">2022.10</div>
+        </div>
+      </div>
+      <div class="award-item">
+        <span class="award-icon">🥈</span>
+        <div>
+          <div class="award-name">"JianXing Cup" Jiangsu Student Innovation Contest — 2nd Place <span class="award-level">Province</span></div>
+          <div class="award-date">2025.08</div>
+        </div>
+      </div>
+      <div class="award-item">
+        <span class="award-icon">🌏</span>
+        <div>
+          <div class="award-name">MCM/ICM (小美赛) — Meritorious Winner (International 1st Prize) <span class="award-level">International</span></div>
+          <div class="award-date">2021.11</div>
+        </div>
+      </div>
+      <div class="award-item">
+        <span class="award-icon">🥉</span>
+        <div>
+          <div class="award-name">13th China University Service Outsourcing Innovation Contest — National 3rd Prize <span class="award-level">National</span></div>
+          <div class="award-date">2022.05</div>
+        </div>
+      </div>
+      <div class="award-item">
+        <span class="award-icon">📐</span>
+        <div>
+          <div class="award-name">National Mathematical Modeling Contest — Zhejiang Province 3rd Prize</div>
+          <div class="award-date">2021.06</div>
+        </div>
+      </div>
+      <div class="award-item">
+        <span class="award-icon">⭐</span>
+        <div>
+          <div class="award-name">Outstanding Graduate — Zhejiang University of Technology</div>
+          <div class="award-date">2023.06</div>
+        </div>
+      </div>
+      <div class="award-item">
+        <span class="award-icon">📝</span>
+        <div>
+          <div class="award-name">Outstanding Bachelor's Thesis — ZJUT</div>
+          <div class="award-date">2023.06</div>
+        </div>
+      </div>
+      <div class="award-item">
+        <span class="award-icon">🌟</span>
+        <div>
+          <div class="award-name">Outstanding Youth League Member — NUAA</div>
+          <div class="award-date">2024.04</div>
+        </div>
+      </div>
+      <div class="award-item">
+        <span class="award-icon">🌟</span>
+        <div>
+          <div class="award-name">Outstanding Youth League Member — ZJUT (×3)</div>
+          <div class="award-date">2022.04 · 2021.04 · 2020.04</div>
+        </div>
+      </div>
+      <div class="award-item">
+        <span class="award-icon">📚</span>
+        <div>
+          <div class="award-name">Second-Class Academic Scholarship — ZJUT (×2)</div>
+          <div class="award-date">2021.10 · 2020.10</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="fade-in">
+    <div class="section-header">
+      <h2 class="section-title">About Me</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+      <div style="padding:24px;background:var(--bg2);border:1px solid var(--border);border-radius:12px;">
+        <div style="font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:14px;">Research Profile</div>
+        <p style="font-size:13.5px;color:var(--text2);line-height:1.75;">
+          3 papers published at top venues (ICML CCF-A, IEEE Transactions JCR Q1, ICME CCF-B). 2 IEEE Transactions papers under review, 1 CCF-A conference paper under submission. Systematic and frontier research output with sustained production capacity.
+        </p>
+      </div>
+      <div style="padding:24px;background:var(--bg2);border:1px solid var(--border);border-radius:12px;">
+        <div style="font-family:var(--mono);font-size:11px;color:var(--accent2);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:14px;">Leadership</div>
+        <p style="font-size:13.5px;color:var(--text2);line-height:1.75;">
+          Proactively formed and led a research group from the second year of graduate study. Effective at organizing team collaboration and driving progress. Strong scientific visualization skills — adept at creating high-quality model diagrams that communicate research findings clearly.
+        </p>
+      </div>
+    </div>
+    <div style="margin-top:20px;padding:24px;background:var(--bg2);border:1px solid var(--border);border-radius:12px;">
+      <div style="font-family:var(--mono);font-size:11px;color:var(--accent3);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:14px;">Technical Skills</div>
+      <div class="skills-row">
+        <span class="skill-tag">PyTorch</span>
+        <span class="skill-tag">Deep Learning</span>
+        <span class="skill-tag">EEG Signal Processing</span>
+        <span class="skill-tag">Diffusion Models</span>
+        <span class="skill-tag">Graph Neural Networks</span>
+        <span class="skill-tag">Contrastive Learning</span>
+        <span class="skill-tag">Multimodal Learning</span>
+        <span class="skill-tag">Affective Computing</span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">MATLAB</span>
+      </div>
+    </div>
+  </section>
 
 </div>
+
+<footer>
+  <div class="container">
+    <p>Liu Minxu · NUAA · <a href="mailto:liuminxu@nuaa.edu.com">liuminxu@nuaa.edu.com</a> · Built with ♥ and HTML</p>
+    <p style="margin-top:6px;opacity:0.5;">© 2025 Liu Minxu. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  // Fade in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Glow blob follows mouse loosely
+  const blob = document.querySelector('.glow-blob');
+  let mx = 0, my = 0, bx = 0, by = 0;
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX - 300;
+    my = e.clientY - 300;
+  });
+  function animBlob() {
+    bx += (mx - bx) * 0.04;
+    by += (my - by) * 0.04;
+    blob.style.left = bx + 'px';
+    blob.style.top = by + 'px';
+    requestAnimationFrame(animBlob);
+  }
+  animBlob();
+</script>
 
 </body>
 </html>
