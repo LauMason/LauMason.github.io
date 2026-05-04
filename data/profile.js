@@ -102,7 +102,7 @@ const PROFILE = {
       id: "affective",
       label: "Area 02",
       title: "Affective Computing",
-      subtitle: "Cross-Subject Emotion Recognition",
+      subtitle: "Multimodal & Cross-Subject Emotion Recognition",
       papers: ["tcds", "icme", "taffc"],
     },
   ],
