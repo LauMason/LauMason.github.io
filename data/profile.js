@@ -126,8 +126,8 @@ const PROFILE = {
     "vista": {
       title: "VISTA: Dynamic Spatial-Temporal Asynchrony for EEG Visual Decoding",
       authors: ["Minxu Liu", "Donghai Guan", "Chuhang Zheng", "Weitao You"],
-      venue: "KDD 2026",
-      venueFull: "SIGKDD Conference on Knowledge Discovery and Data Mining (KDD) 2026",
+      venue: "",
+      venueFull: "",
       venueType: "ccfa",
       status: "review",
       period: "Apr 2025 – Aug 2025",
