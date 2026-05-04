@@ -110,7 +110,7 @@ const PROFILE = {
   publications: {
     "vieeg": {
       title: "ViEEG: Hierarchical Visual Neural Representation for EEG Brain Decoding",
-      authors: ["Minxu Liu", "et al."],    // bold the first matching "Minxu Liu"
+      authors: ["Minxu Liu", "Donghai Guan", "Chuhang Zheng", "Chunwei Tian", "Jie Wen", "Qi Zhu"],    // bold the first matching "Minxu Liu"
       venue: "ICML 2026",
       venueFull: "International Conference on Machine Learning (ICML) 2026",
       venueType: "ccfa",   // ccfa | ccfb | q1 | other
@@ -125,7 +125,7 @@ const PROFILE = {
     },
     "vista": {
       title: "VISTA: Dynamic Spatial-Temporal Asynchrony for EEG Visual Decoding",
-      authors: ["Minxu Liu", "et al."],
+      authors: ["Minxu Liu", "Donghai Guan", "Chuhang Zheng", "Weitao You"],
       venue: "KDD 2026",
       venueFull: "SIGKDD Conference on Knowledge Discovery and Data Mining (KDD) 2026",
       venueType: "ccfa",
@@ -153,7 +153,7 @@ const PROFILE = {
     },
     "tcds": {
       title: "Multi-Modal Discriminative Network for Emotion Recognition across Individuals",
-      authors: ["Minxu Liu", "et al."],
+      authors: ["Minxu Liu", "Donghai Guan", "Chuhang Zheng", "Qi Zhu"],
       venue: "IEEE TCDS",
       venueFull: "IEEE Transactions on Cognitive and Developmental Systems 2025 (JCR Q1, IF 5.0)",
       venueType: "q1",
@@ -168,7 +168,7 @@ const PROFILE = {
     },
     "icme": {
       title: "Non-Depersonalized Disentanglement for Cross-Subject Emotion Recognition",
-      authors: ["Minxu Liu", "et al."],
+      authors: ["Minxu Liu", "Donghai Guan", "Chuhang Zheng", "Qi Zhu"],
       venue: "ICME 2026",
       venueFull: "IEEE International Conference on Multimedia and Expo (ICME) 2026",
       venueType: "ccfb",
