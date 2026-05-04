@@ -160,7 +160,7 @@
         const vt = venueTypeMap[p.venueType] || venueTypeMap.other;
         const st = statusMap[p.status] || statusMap.review;
         const authorsHtml = p.authors.map(a =>
-          a === 'Liu Minxu' ? `<span class="self">${a} (First Author)</span>` : a
+          a === 'Minxu Liu' ? `<span class="self">${a} (First Author)</span>` : a
         ).join(', ');
 
         const linksHtml = Object.entries(p.links || {}).map(([type, url]) => {
