@@ -58,6 +58,11 @@ const PROFILE = {
   news: [
     {
       date: "2026.04",
+      type: "paper",
+      content: `Paper <em>ViEEG: Hierarchical Visual Neural Representation for EEG Brain Decoding</em> accepted at <strong>ICML 2026</strong> (CCF-A). <a href="https://arxiv.org/abs/2505.12408" target="_blank">arXiv ↗</a>`,
+    },
+    {
+      date: "2026.04",
       type: "admission",   // admission | paper | award | other
       content: `Admitted to the <strong>Ph.D. program at Zhejiang University, College of Artificial Intelligence</strong>. Incoming Fall 2026. 🎉`,
     },
@@ -65,11 +70,6 @@ const PROFILE = {
       date: "2026.04",
       type: "award",
       content: `Awarded <strong>"Outstanding Graduate Student"</strong> by NUAA College of Computer Science and Technology.`,
-    },
-    {
-      date: "2026.04",
-      type: "paper",
-      content: `Paper <em>ViEEG: Hierarchical Visual Neural Representation for EEG Brain Decoding</em> accepted at <strong>ICML 2026</strong> (CCF-A). <a href="https://arxiv.org/abs/2505.12408" target="_blank">arXiv ↗</a>`,
     },
     {
       date: "2026.02",
