@@ -77,14 +77,14 @@ const PROFILE = {
       content: `Paper <em>Non-Depersonalized Disentanglement for Cross-Subject Emotion Recognition</em> accepted at <strong>ICME 2026</strong> (CCF-B).`,
     },
     {
-      date: "2025.04",
-      type: "paper",
-      content: `Paper <em>Multi-Modal Discriminative Network for Emotion Recognition across Individuals</em> accepted at <strong>IEEE TCDS</strong> (JCR Q1, IF 5.0). <a href="https://ieeexplore.ieee.org/abstract/document/10930808" target="_blank">IEEE Xplore ↗</a>`,
-    },
-    {
       date: "2025.10",
       type: "award",
       content: `Awarded NUAA <strong>First-Class Graduate Scholarship</strong> for 2025–2026 (third consecutive year).`,
+    },
+    {
+      date: "2025.04",
+      type: "paper",
+      content: `Paper <em>Multi-Modal Discriminative Network for Emotion Recognition across Individuals</em> accepted at <strong>IEEE TCDS</strong> (JCR Q1, IF 5.0). <a href="https://ieeexplore.ieee.org/abstract/document/10930808" target="_blank">IEEE Xplore ↗</a>`,
     },
   ],
 
