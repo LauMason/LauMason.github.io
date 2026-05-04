@@ -120,7 +120,7 @@ const PROFILE = {
       links: {
         arxiv: "https://arxiv.org/abs/2505.12408",
       },
-      image: "assets/images/papers/vieeg.png",  // optional: paper teaser image
+      image: "assets/images/papers/ViEEG.png",  // optional: paper teaser image
       emoji: "🧠",
     },
     "vista": {
