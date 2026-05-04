@@ -57,7 +57,7 @@ const PROFILE = {
   // ── News ────────────────────────────────────────────────
   news: [
     {
-      date: "2026.04",
+      date: "2026.05",
       type: "paper",
       content: `Paper <em>ViEEG: Hierarchical Visual Neural Representation for EEG Brain Decoding</em> accepted at <strong>ICML 2026</strong> (CCF-A). <a href="https://arxiv.org/abs/2505.12408" target="_blank">arXiv ↗</a>`,
     },
