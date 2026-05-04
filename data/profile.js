@@ -15,15 +15,15 @@ const PROFILE = {
   title: "Ph.D. Student",
   affiliation: {
     current: {
-      name: "School of Artificial Intelligence, Zhejiang University",
+      name: "College of Artificial Intelligence, Zhejiang University",
       nameZh: "浙江大学人工智能学院",
       url: "https://www.zju.edu.cn",
       start: "2026",
       status: "incoming", // "current" | "incoming"
     },
     previous: {
-      name: "Nanjing University of Aeronautics and Astronautics",
-      nameZh: "南京航空航天大学",
+      name: "College of Computer Science and Technology, Nanjing University of Aeronautics and Astronautics",
+      nameZh: "南京航空航天大学计算机科学与技术学院",
       url: "https://www.nuaa.edu.cn",
     }
   },
@@ -34,23 +34,23 @@ const PROFILE = {
     email_nuaa: "liuminxu@nuaa.edu.com",
     email_163:  "liuminxu119@163.com",
     phone:      "+86-151-5799-2209",
-    arxiv:      "https://arxiv.org/search/?searchtype=author&query=Minxu+Liu",
-    googleScholar: "", // add when available
-    github:     "",    // add when available
+    // arxiv:      "https://arxiv.org/search/?searchtype=author&query=Minxu+Liu",
+    googleScholar: "https://scholar.google.com/citations?hl=zh-CN&user=ve49nrEAAAAJ", // add when available
+    github:     "LauMason",    // add when available
   },
 
   // ── Research Interests ──────────────────────────────────
   researchInterests: [
     "Neural Signal Processing",
     "Audiovisual Representation Learning",
-    "Multimodal Emotion Recognition",
-    "EEG-based Brain Decoding",
+    "Multimodal Learning",
+    "Brain Decoding",
     "Affective Computing",
     "Deep Learning",
   ],
 
   // ── Bio (shown in hero) ─────────────────────────────────
-  bio: `I am an incoming Ph.D. student at the <strong>School of Artificial Intelligence, Zhejiang University</strong> (Fall 2026), and a recent M.Eng. graduate from Nanjing University of Aeronautics and Astronautics (2023–2026). My research focuses on <strong>neural signal processing</strong>, <strong>audiovisual representation learning</strong>, and <strong>affective computing</strong> — particularly on understanding how the human brain perceives and processes visual and auditory information from EEG signals.`,
+  bio: `I am an incoming Ph.D. student at the <strong>College of Artificial Intelligence, Zhejiang University</strong> (Fall 2026), and a recent M.Eng. graduate from Nanjing University of Aeronautics and Astronautics (2023–2026). My research focuses on <strong>neural signal processing</strong>, <strong>audiovisual representation learning</strong>, and <strong>affective computing</strong> — particularly on understanding how the human brain perceives and processes visual and auditory information from EEG signals.`,
 
   collaboration: `I am always open to academic collaborations. If you are interested in neural signal decoding, multimodal emotion recognition, or related topics, please feel free to reach out.`,
 
@@ -59,7 +59,7 @@ const PROFILE = {
     {
       date: "2026.04",
       type: "admission",   // admission | paper | award | other
-      content: `Admitted to the <strong>Ph.D. program at Zhejiang University, School of Artificial Intelligence</strong>. Incoming Fall 2026. 🎉`,
+      content: `Admitted to the <strong>Ph.D. program at Zhejiang University, College of Artificial Intelligence</strong>. Incoming Fall 2026. 🎉`,
     },
     {
       date: "2026.04",
@@ -67,17 +67,17 @@ const PROFILE = {
       content: `Awarded <strong>"Outstanding Graduate Student"</strong> by NUAA College of Computer Science and Technology.`,
     },
     {
-      date: "2025.04",
+      date: "2026.04",
       type: "paper",
       content: `Paper <em>ViEEG: Hierarchical Visual Neural Representation for EEG Brain Decoding</em> accepted at <strong>ICML 2026</strong> (CCF-A). <a href="https://arxiv.org/abs/2505.12408" target="_blank">arXiv ↗</a>`,
     },
     {
-      date: "2024.11",
+      date: "2026.02",
       type: "paper",
       content: `Paper <em>Non-Depersonalized Disentanglement for Cross-Subject Emotion Recognition</em> accepted at <strong>ICME 2026</strong> (CCF-B).`,
     },
     {
-      date: "2024.04",
+      date: "2025.04",
       type: "paper",
       content: `Paper <em>Multi-Modal Discriminative Network for Emotion Recognition across Individuals</em> accepted at <strong>IEEE TCDS</strong> (JCR Q1, IF 5.0). <a href="https://ieeexplore.ieee.org/abstract/document/10930808" target="_blank">IEEE Xplore ↗</a>`,
     },
@@ -96,7 +96,7 @@ const PROFILE = {
       label: "Area 01",
       title: "Neural Visual Decoding",
       subtitle: "EEG → Image Reconstruction",
-      papers: ["vieeg", "eeg-sttn", "vista"],
+      papers: ["vieeg", "vista", "eeg2vision"],
     },
     {
       id: "affective",
@@ -123,19 +123,6 @@ const PROFILE = {
       image: "assets/images/papers/vieeg.png",  // optional: paper teaser image
       emoji: "🧠",
     },
-    "eeg-sttn": {
-      title: "EEG Spatial-Temporal Topology Network for Brain Visual Decoding",
-      authors: ["Liu Minxu", "et al."],
-      venue: "IEEE TSMCA",
-      venueFull: "IEEE Transactions on Systems, Man, and Cybernetics: Systems (JCR Q1, IF 8.7)",
-      venueType: "q1",
-      status: "review",
-      period: "Jul 2024 – Dec 2024",
-      abstract: "Introduces topological connectivity to explicitly model brain topology strength under visual stimuli. Proposes a soft alignment strategy to bridge the heterogeneity between EEG and vision-language model representations. Designs a task-oriented disentanglement module for simultaneous coarse-grained recognition and fine-grained reconstruction.",
-      links: {},
-      image: "",
-      emoji: "👁",
-    },
     "vista": {
       title: "VISTA: Dynamic Spatial-Temporal Asynchrony for EEG Visual Decoding",
       authors: ["Liu Minxu", "et al."],
@@ -145,9 +132,24 @@ const PROFILE = {
       status: "review",
       period: "Apr 2025 – Aug 2025",
       abstract: "Disentangles visual-stimulus-evoked EEG into fine-grained visual and coarse-grained semantic understanding. Models spatiotemporal dynamic asynchrony in both temporal and spatial dimensions, providing interpretability for EEG-based brain visual decoding.",
-      links: {},
+      links: {
+        OpenReview: "https://openreview.net/forum?id=IajjifoLwo",
+        },
       image: "",
       emoji: "⚡",
+    },
+    "eeg2vision": {
+      title: "EEG Spatial-Temporal Topology Network for Brain Visual Decoding",
+      authors: ["Liu Minxu", "et al."],
+      venue: "",
+      venueFull: "",
+      venueType: "",
+      status: "review",
+      period: "Jul 2024 – Dec 2024",
+      abstract: "Introduces topological connectivity to explicitly model brain topology strength under visual stimuli. Proposes a soft alignment strategy to bridge the heterogeneity between EEG and vision-language model representations. Designs a task-oriented disentanglement module for simultaneous coarse-grained recognition and fine-grained reconstruction.",
+      links: {},
+      image: "",
+      emoji: "👁",
     },
     "tcds": {
       title: "Multi-Modal Discriminative Network for Emotion Recognition across Individuals",
@@ -161,7 +163,7 @@ const PROFILE = {
       links: {
         ieee: "https://ieeexplore.ieee.org/abstract/document/10930808",
       },
-      image: "",
+      image: "assets/images/papers/TCDS.png",
       emoji: "💡",
     },
     "icme": {
@@ -174,15 +176,15 @@ const PROFILE = {
       period: "Jun 2024 – Nov 2024",
       abstract: "Addresses marginal probability alignment eliminating personalized emotion features in cross-subject tasks. Designs intra-domain and inter-domain invariant representation disentanglement with separation constraints; optimizes spectral-spatial attention networks via topological connectivity.",
       links: {},
-      image: "",
+      image: "assets/images/papers/NDDR.png",
       emoji: "🎭",
     },
     "taffc": {
       title: "Multi-Scale Topology Representation for Interpretable EEG Emotion Recognition",
       authors: ["Liu Minxu", "et al."],
-      venue: "IEEE TAFFC",
-      venueFull: "IEEE Transactions on Affective Computing (JCR Q1, IF 9.8)",
-      venueType: "q1",
+      venue: "",
+      venueFull: "",
+      venueType: "",
       status: "review",
       period: "Jan 2024 – Jun 2024",
       abstract: "Introduces expert-prior brain functional partitioning to construct multi-level graph neural networks, capturing multi-scale global brain region and local functional partition topological connectivity, learning biologically interpretable brain networks.",
@@ -200,7 +202,7 @@ const PROFILE = {
       url: "https://www.zju.edu.cn",
       degree: "Ph.D. · Artificial Intelligence",
       period: "2026 – present",
-      note: "Incoming · School of Artificial Intelligence",
+      note: "Incoming · College of Artificial Intelligence",
       status: "incoming",
       gpa: "",
       emoji: "⭐",
@@ -222,7 +224,7 @@ const PROFILE = {
       url: "https://www.zjut.edu.cn",
       degree: "B.Eng. · Software Engineering",
       period: "2019 – 2023",
-      note: "Outstanding Graduate · Outstanding Thesis",
+      note: "Outstanding Graduate · Outstanding Thesis · College of Computer Science and Technology",
       status: "graduated",
       gpa: "3.74 / 4.0 · Ranked 5 / 99",
       emoji: "🎓",
