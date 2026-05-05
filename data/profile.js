@@ -31,7 +31,7 @@ const PROFILE = {
   photo: "assets/images/profile/avatar.jpg", // replace with your photo
 
   contact: {
-    email_nuaa: "liuminxu@nuaa.edu.com",
+    email_nuaa: "liuminxu@nuaa.edu.cn",
     email_163:  "liuminxu119@163.com",
     phone:      "+86-151-5799-2209",
     // arxiv:      "https://arxiv.org/search/?searchtype=author&query=Minxu+Liu",
