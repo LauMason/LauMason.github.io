@@ -7,13 +7,31 @@
   <meta property="og:title" content="Minxu Liu | 刘旻栩">
   <meta property="og:description" content="Ph.D. student at ZJU AI. Neural signals · Audiovisual representation · Affective computing.">
   <title>Minxu Liu</title>
-
-  <!-- Stylesheet -->
   <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
 
-  <!-- ── NAVIGATION ─────────────────────────────── -->
+  <!-- ── THEME SWITCHER ──────────────────────────────────── -->
+  <div id="theme-panel">
+    <button id="theme-toggle" title="Switch color theme">🎨</button>
+    <div id="theme-grid" class="hidden">
+      <div class="theme-label">Color Themes</div>
+      <div class="theme-swatches">
+        <button class="swatch active" data-theme="ivory"     title="Ivory &amp; Jade"><span style="background:#f9f7f4"></span><span style="background:#7aac96"></span><small>Ivory</small></button>
+        <button class="swatch" data-theme="dark"             title="Deep Slate"><span style="background:#0d0f14"></span><span style="background:#6ee7f7"></span><small>Slate</small></button>
+        <button class="swatch" data-theme="midnight"         title="Midnight Blue"><span style="background:#0f1523"></span><span style="background:#7eb8f7"></span><small>Midnight</small></button>
+        <button class="swatch" data-theme="forest"           title="Forest &amp; Moss"><span style="background:#f4f7f4"></span><span style="background:#5a8c6a"></span><small>Forest</small></button>
+        <button class="swatch" data-theme="rose"             title="Rose Quartz"><span style="background:#fdf6f6"></span><span style="background:#c4706b"></span><small>Rose</small></button>
+        <button class="swatch" data-theme="obsidian"         title="Obsidian &amp; Gold"><span style="background:#131210"></span><span style="background:#c9a84c"></span><small>Obsidian</small></button>
+        <button class="swatch" data-theme="arctic"           title="Arctic White"><span style="background:#f7f9fb"></span><span style="background:#4a90d9"></span><small>Arctic</small></button>
+        <button class="swatch" data-theme="lavender"         title="Lavender Dusk"><span style="background:#f5f4fb"></span><span style="background:#7c6fc4"></span><small>Lavender</small></button>
+        <button class="swatch" data-theme="sand"             title="Sand &amp; Terracotta"><span style="background:#faf5ee"></span><span style="background:#c46a3a"></span><small>Sand</small></button>
+        <button class="swatch" data-theme="carbon"           title="Carbon &amp; Neon"><span style="background:#1a1a1a"></span><span style="background:#39ff90"></span><small>Carbon</small></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── NAVIGATION ─────────────────────────────────────── -->
   <nav id="nav">
     <div class="nav-inner">
       <a class="nav-logo" href="#"></a>
@@ -26,20 +44,20 @@
     </div>
   </nav>
 
-  <!-- ── HERO ───────────────────────────────────── -->
+  <!-- ── HERO ───────────────────────────────────────────── -->
   <div class="page-wrap">
     <section id="hero">
-      <div id="hero-content"><!-- rendered by app.js --></div>
-      <div class="hero-photo-wrap" id="hero-photo"><!-- rendered by app.js --></div>
+      <div id="hero-content"></div>
+      <div class="hero-photo-wrap" id="hero-photo"></div>
     </section>
   </div>
 
-  <!-- ── STATS BAR ──────────────────────────────── -->
+  <!-- ── STATS BAR ──────────────────────────────────────── -->
   <div class="page-wrap">
     <div id="stats-row" class="stats-row reveal"></div>
   </div>
 
-  <!-- ── NEWS ───────────────────────────────────── -->
+  <!-- ── NEWS ───────────────────────────────────────────── -->
   <div class="page-wrap">
     <section id="news" class="section reveal">
       <div class="section-eyebrow">// Latest</div>
@@ -48,7 +66,7 @@
     </section>
   </div>
 
-  <!-- ── PUBLICATIONS ───────────────────────────── -->
+  <!-- ── PUBLICATIONS ───────────────────────────────────── -->
   <div class="page-wrap">
     <section id="publications" class="section">
       <div class="section-eyebrow">// Selected Works</div>
@@ -57,7 +75,7 @@
     </section>
   </div>
 
-  <!-- ── EDUCATION ──────────────────────────────── -->
+  <!-- ── EDUCATION ──────────────────────────────────────── -->
   <div class="page-wrap">
     <section id="education" class="section reveal">
       <div class="section-eyebrow">// Academic Background</div>
@@ -66,7 +84,7 @@
     </section>
   </div>
 
-  <!-- ── AWARDS ─────────────────────────────────── -->
+  <!-- ── AWARDS ─────────────────────────────────────────── -->
   <div class="page-wrap">
     <section id="awards" class="section reveal">
       <div class="section-eyebrow">// Recognition</div>
@@ -75,22 +93,12 @@
     </section>
   </div>
 
-  <!-- ── FOOTER ─────────────────────────────────── -->
+  <!-- ── FOOTER ─────────────────────────────────────────── -->
   <footer id="footer">
     <div id="footer-inner" class="footer-inner"></div>
   </footer>
 
-  <!-- ── DATA + APP ─────────────────────────────── -->
-  <!--
-    To update content: edit data/profile.js only.
-    To update styles:  edit assets/css/main.css
-    To update layout:  edit assets/js/app.js
-    Images:
-      Profile photo   → assets/images/profile/avatar.jpg
-      Paper teasers   → assets/images/papers/<paper-id>.png
-  -->
   <script src="data/profile.js"></script>
   <script src="assets/js/app.js"></script>
-
 </body>
 </html>

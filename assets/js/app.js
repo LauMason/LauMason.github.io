@@ -6,21 +6,14 @@
 (function () {
   'use strict';
 
-  // ── Helpers ──────────────────────────────────────────────
   const $ = (sel) => document.querySelector(sel);
   const $$ = (sel) => document.querySelectorAll(sel);
-  const el = (tag, cls, html) => {
-    const e = document.createElement(tag);
-    if (cls) e.className = cls;
-    if (html) e.innerHTML = html;
-    return e;
-  };
 
   const venueTypeMap = {
-    ccfa: { cls: 'venue-ccfa', label: 'CCF-A' },
-    ccfb: { cls: 'venue-ccfb', label: 'CCF-B' },
-    q1:   { cls: 'venue-q1',   label: 'JCR Q1' },
-    other:{ cls: 'venue-ccfb', label: '' },
+    ccfa:  { cls: 'venue-ccfa', label: 'CCF-A' },
+    ccfb:  { cls: 'venue-ccfb', label: 'CCF-B' },
+    q1:    { cls: 'venue-q1',   label: 'JCR Q1' },
+    other: { cls: 'venue-ccfb', label: '' },
   };
   const statusMap = {
     accepted:  { cls: 'status-accepted', label: 'Accepted' },
@@ -49,7 +42,8 @@
     if (!wrap) return;
 
     const aff = PROFILE.affiliation.current;
-    const prev = PROFILE.affiliation.previous;
+    const c = PROFILE.contact;
+    const collab = PROFILE.collaboration;
 
     wrap.innerHTML = `
       <div class="hero-tag">
@@ -65,49 +59,69 @@
         <span class="sep">·</span>
         <a href="${aff.url}" target="_blank">${aff.name}</a>
         <span class="sep">·</span>
-        <span>${PROFILE.hometown}</span>
+        <span>📍 ${PROFILE.hometown}</span>
       </div>
 
       <p class="hero-bio">${PROFILE.bio}</p>
 
-      <p class="hero-collab">${PROFILE.collaboration}</p>
+      <div class="hero-collab">
+        <div class="collab-header">
+          <span class="collab-emoji">${collab.emoji}</span>
+          <strong>${collab.headline}</strong>
+        </div>
+        <p>${collab.body}</p>
+      </div>
 
       <div class="hero-interests">
         ${PROFILE.researchInterests.map(r => `<span class="interest-tag">${r}</span>`).join('')}
       </div>
 
       <div class="hero-actions">
-        <a class="btn btn-primary" href="mailto:${PROFILE.contact.email_nuaa}">
-          ✉&nbsp; ${PROFILE.contact.email_nuaa}
-        </a>
-        ${PROFILE.contact.arxiv ? `<a class="btn btn-ghost" href="${PROFILE.contact.arxiv}" target="_blank">arXiv ↗</a>` : ''}
-        ${PROFILE.contact.googleScholar ? `<a class="btn btn-ghost" href="${PROFILE.contact.googleScholar}" target="_blank">Scholar ↗</a>` : ''}
-        ${PROFILE.contact.github ? `<a class="btn btn-ghost" href="https://github.com/${PROFILE.contact.github}" target="_blank">GitHub ↗</a>` : ''}
+        <div class="email-group">
+          <a class="btn btn-primary email-btn" href="mailto:${c.email_edu}">
+            <span class="email-icon">✉</span>
+            <span class="email-text">
+              <span class="email-label">Academic</span>
+              <span class="email-addr">${c.email_edu}</span>
+            </span>
+          </a>
+          <a class="btn btn-ghost email-btn" href="mailto:${c.email_163}">
+            <span class="email-icon">✉</span>
+            <span class="email-text">
+              <span class="email-label">Personal</span>
+              <span class="email-addr">${c.email_163}</span>
+            </span>
+          </a>
+        </div>
+        <div class="link-group">
+          ${c.googleScholar ? `<a class="btn btn-ghost btn-icon" href="${c.googleScholar}" target="_blank">Scholar ↗</a>` : ''}
+          ${c.github ? `<a class="btn btn-ghost btn-icon" href="https://github.com/${c.github}" target="_blank">GitHub ↗</a>` : ''}
+        </div>
       </div>
     `;
 
-    // Photo
+    // ── Photo ──────────────────────────────────────────────
     const photoWrap = $('#hero-photo');
-    if (photoWrap) {
-      photoWrap.innerHTML = `
-        <div class="hero-photo-frame">
-          <div class="hero-photo-initials" id="photo-initials">${PROFILE.name.zh.slice(1)}</div>
-        </div>
-        <div class="hero-photo-caption">
-          ${PROFILE.name.en}<br>
-          ${aff.nameZh}
-        </div>
-      `;
-      // Try to load real photo
-      if (PROFILE.photo) {
-        const img = new Image();
-        img.src = PROFILE.photo;
-        img.alt = PROFILE.name.en;
-        img.onload = () => {
-          const initials = $('#photo-initials');
-          if (initials) initials.replaceWith(img);
-        };
-      }
+    if (!photoWrap) return;
+
+    photoWrap.innerHTML = `
+      <div class="hero-photo-frame">
+        <div class="hero-photo-initials" id="photo-initials">${PROFILE.name.zh.slice(1)}</div>
+      </div>
+      <div class="hero-photo-caption">
+        ${PROFILE.name.en}<br>
+        ${aff.nameZh}
+      </div>
+    `;
+
+    if (PROFILE.photo) {
+      const img = new Image();
+      img.src = PROFILE.photo;
+      img.alt = PROFILE.name.en;
+      img.onload = () => {
+        const initials = $('#photo-initials');
+        if (initials) initials.replaceWith(img);
+      };
     }
   }
 
@@ -115,10 +129,11 @@
   function renderStats() {
     const wrap = $('#stats-row');
     if (!wrap) return;
-    const total = Object.keys(PROFILE.publications).length;
-    const accepted = Object.values(PROFILE.publications).filter(p => p.status === 'accepted').length;
-    const review   = Object.values(PROFILE.publications).filter(p => p.status === 'review' || p.status === 'submitted').length;
-    const ccfa = Object.values(PROFILE.publications).filter(p => p.venueType === 'ccfa').length;
+    const pubs = Object.values(PROFILE.publications);
+    const total    = pubs.length;
+    const accepted = pubs.filter(p => p.status === 'accepted').length;
+    const review   = pubs.filter(p => p.status === 'review' || p.status === 'submitted').length;
+    const ccfa     = pubs.filter(p => p.venueType === 'ccfa').length;
     wrap.innerHTML = `
       <div class="stat-item"><div class="stat-number">${total}</div><div class="stat-label">Papers</div></div>
       <div class="stat-item"><div class="stat-number">${accepted}</div><div class="stat-label">Accepted</div></div>
@@ -151,7 +166,7 @@
     if (!wrap) return;
 
     let paperIndex = 0;
-    wrap.innerHTML = PROFILE.publicationAreas.map((area) => {
+    wrap.innerHTML = PROFILE.publicationAreas.map(area => {
       const papersHtml = area.papers.map(pid => {
         const p = PROFILE.publications[pid];
         if (!p) return '';
@@ -159,14 +174,24 @@
         const idx = String(paperIndex).padStart(2, '0');
         const vt = venueTypeMap[p.venueType] || venueTypeMap.other;
         const st = statusMap[p.status] || statusMap.review;
+
         const authorsHtml = p.authors.map(a =>
-          a === 'Minxu Liu' ? `<span class="self">${a} (First Author)</span>` : a
+          a === 'Minxu Liu'
+            ? `<span class="self">${a} <span class="first-author-tag">(First Author)</span></span>`
+            : a
         ).join(', ');
 
-        const linksHtml = Object.entries(p.links || {}).map(([type, url]) => {
-          const icons = { arxiv: '📄 arXiv', ieee: '🔗 IEEE', pdf: '📎 PDF', code: '💻 Code', project: '🌐 Project' };
-          return `<a class="paper-link" href="${url}" target="_blank">${icons[type] || type}</a>`;
-        }).join('');
+        const linkLabels = {
+          arxiv: '📄 arXiv',
+          ieee: '🔗 IEEE Xplore',
+          pdf: '📎 PDF',
+          code: '💻 Code',
+          project: '🌐 Project',
+          OpenReview: '🔍 OpenReview',
+        };
+        const linksHtml = Object.entries(p.links || {}).map(([type, url]) =>
+          `<a class="paper-link" href="${url}" target="_blank">${linkLabels[type] || type}</a>`
+        ).join('');
 
         const thumbHtml = p.image
           ? `<img src="${p.image}" alt="${p.title}" loading="lazy">`
@@ -177,14 +202,14 @@
             <div class="paper-thumb">${thumbHtml}</div>
             <div class="paper-body">
               <div class="paper-meta-row">
-                <span class="venue-pill ${vt.cls}">${p.venue}</span>
-                <span class="venue-pill ${vt.cls}" style="opacity:0.7">${vt.label}</span>
+                ${p.venue ? `<span class="venue-pill ${vt.cls}">${p.venue}</span>` : ''}
+                <span class="venue-pill ${vt.cls}" style="opacity:0.65">${vt.label}</span>
                 <span class="status-pill ${st.cls}">${st.label}</span>
                 <span class="paper-index">#${idx}</span>
               </div>
               <div class="paper-title">${p.title}</div>
               <div class="paper-authors">${authorsHtml}</div>
-              <div class="paper-venue-line">${p.venueFull} · ${p.period}</div>
+              <div class="paper-venue-line">${p.venueFull} · <span class="paper-period">${p.period}</span></div>
               <div class="paper-abstract">${p.abstract}</div>
               ${linksHtml ? `<div class="paper-links">${linksHtml}</div>` : ''}
             </div>
@@ -217,14 +242,14 @@
       return `
         <div class="edu-item ${isIncoming ? 'incoming' : ''} reveal">
           <div class="edu-icon-wrap">${e.emoji}</div>
-          <div>
+          <div class="edu-body">
             <div class="edu-school">
               <a href="${e.url}" target="_blank">${e.school}</a>
               <span class="edu-school-zh">${e.schoolZh}</span>
               ${isIncoming ? `<span class="incoming-badge">Incoming · 拟录取</span>` : ''}
             </div>
             <div class="edu-degree">${e.degree}</div>
-            <div class="edu-note">${e.note}${e.gpa ? ` · <span style="color:var(--jade)">${e.gpa}</span>` : ''}</div>
+            <div class="edu-note">${e.note}${e.gpa ? ` · <span class="edu-gpa">${e.gpa}</span>` : ''}</div>
           </div>
           <div class="edu-period">${e.period}</div>
         </div>
@@ -253,7 +278,7 @@
     }).join('');
   }
 
-  // ── Scroll Nav shadow ────────────────────────────────────
+  // ── Nav scroll shadow ────────────────────────────────────
   function initNav() {
     const nav = $('#nav');
     if (!nav) return;
@@ -262,41 +287,71 @@
     }, { passive: true });
   }
 
-  // ── Scroll Reveal ────────────────────────────────────────
+  // ── Scroll reveal ────────────────────────────────────────
   function initReveal() {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          // stagger children if parent revealed
-        }
+        if (e.isIntersecting) e.target.classList.add('visible');
       });
-    }, { threshold: 0.08 });
-    // Observe after a tick to allow rendering
+    }, { threshold: 0.07 });
     setTimeout(() => {
       $$('.reveal').forEach(el => observer.observe(el));
-    }, 50);
+    }, 60);
   }
 
   // ── Footer ───────────────────────────────────────────────
   function renderFooter() {
     const footer = $('#footer-inner');
     if (!footer) return;
+    const c = PROFILE.contact;
     footer.innerHTML = `
       <div>
         <div class="footer-name">${PROFILE.name.en} · ${PROFILE.name.zh}</div>
-        <div class="footer-copy" style="margin-top:6px">© ${new Date().getFullYear()} · ${PROFILE.affiliation.current.nameZh}</div>
+        <div class="footer-copy">© ${new Date().getFullYear()} · ${PROFILE.affiliation.current.nameZh}</div>
       </div>
       <div class="footer-links">
-        <a href="mailto:${PROFILE.contact.email_nuaa}">Email</a>
-        ${PROFILE.contact.arxiv ? `<a href="${PROFILE.contact.arxiv}" target="_blank">arXiv</a>` : ''}
-        ${PROFILE.contact.googleScholar ? `<a href="${PROFILE.contact.googleScholar}" target="_blank">Scholar</a>` : ''}
-        ${PROFILE.contact.github ? `<a href="https://github.com/${PROFILE.contact.github}" target="_blank">GitHub</a>` : ''}
+        <a href="mailto:${c.email_edu}">Email</a>
+        ${c.googleScholar ? `<a href="${c.googleScholar}" target="_blank">Scholar</a>` : ''}
+        ${c.github ? `<a href="https://github.com/${c.github}" target="_blank">GitHub</a>` : ''}
       </div>
     `;
   }
 
-  // ── Init ────────────────────────────────────────────────
+  // ── Theme switcher ───────────────────────────────────────
+  function initTheme() {
+    const toggle = $('#theme-toggle');
+    const grid   = $('#theme-grid');
+    if (!toggle || !grid) return;
+
+    // Load saved theme
+    const saved = localStorage.getItem('theme') || 'ivory';
+    applyTheme(saved);
+    $$('.swatch').forEach(s => {
+      s.classList.toggle('active', s.dataset.theme === saved);
+    });
+
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      grid.classList.toggle('hidden');
+    });
+    document.addEventListener('click', () => grid.classList.add('hidden'));
+    grid.addEventListener('click', e => e.stopPropagation());
+
+    $$('.swatch').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const theme = btn.dataset.theme;
+        applyTheme(theme);
+        localStorage.setItem('theme', theme);
+        $$('.swatch').forEach(s => s.classList.toggle('active', s === btn));
+      });
+    });
+  }
+
+  function applyTheme(name) {
+    document.documentElement.setAttribute('data-theme', name);
+  }
+
+  // ── Init ─────────────────────────────────────────────────
   function init() {
     renderNav();
     renderHero();
@@ -308,6 +363,7 @@
     renderFooter();
     initNav();
     initReveal();
+    initTheme();
   }
 
   if (document.readyState === 'loading') {

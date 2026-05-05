@@ -19,7 +19,7 @@ const PROFILE = {
       nameZh: "浙江大学人工智能学院",
       url: "https://www.zju.edu.cn",
       start: "2026",
-      status: "incoming", // "current" | "incoming"
+      status: "incoming",
     },
     previous: {
       name: "College of Computer Science and Technology, Nanjing University of Aeronautics and Astronautics",
@@ -27,16 +27,16 @@ const PROFILE = {
       url: "https://www.nuaa.edu.cn",
     }
   },
-  hometown: "Zhoushan, Zhejiang",
-  photo: "assets/images/profile/avatar.jpg", // replace with your photo
+  hometown: "Zhoushan, China",
+
+  photo: "assets/images/profile/avatar.jpg",
 
   contact: {
-    email_nuaa: "liuminxu@nuaa.edu.cn",
+    email_edu:  "liuminxu@nuaa.edu.cn",
     email_163:  "liuminxu119@163.com",
     phone:      "+86-151-5799-2209",
-    // arxiv:      "https://arxiv.org/search/?searchtype=author&query=Minxu+Liu",
-    googleScholar: "https://scholar.google.com/citations?hl=zh-CN&user=ve49nrEAAAAJ", // add when available
-    github:     "LauMason",    // add when available
+    googleScholar: "https://scholar.google.com/citations?hl=zh-CN&user=ve49nrEAAAAJ",
+    github:     "LauMason",
   },
 
   // ── Research Interests ──────────────────────────────────
@@ -49,10 +49,15 @@ const PROFILE = {
     "Deep Learning",
   ],
 
-  // ── Bio (shown in hero) ─────────────────────────────────
-  bio: `I am an incoming Ph.D. student at the <strong>College of Artificial Intelligence, Zhejiang University</strong> (Fall 2026), and a recent M.Eng. graduate from Nanjing University of Aeronautics and Astronautics (2023–2026). My research focuses on <strong>neural signal processing</strong>, <strong>audiovisual representation learning</strong>, and <strong>affective computing</strong> — particularly on understanding how the human brain perceives and processes visual and auditory information from EEG signals.`,
+  // ── Bio ─────────────────────────────────────────────────
+  bio: `I am an incoming Ph.D. student at the <strong>College of Artificial Intelligence, Zhejiang University</strong> (Fall 2026), and a recent M.Eng. graduate from Nanjing University of Aeronautics and Astronautics (2023–2026). Originally from <strong>Zhoushan, China</strong>, my research focuses on <strong>neural signal processing</strong>, <strong>audiovisual representation learning</strong>, and <strong>affective computing</strong> — particularly on understanding how the human brain perceives and processes visual and auditory information from EEG signals.`,
 
-  collaboration: `I am always open to academic collaborations. If you are interested in neural signal decoding, multimodal emotion recognition, or related topics, please feel free to reach out.`,
+  // ── Collaboration callout ────────────────────────────────
+  collaboration: {
+    emoji: "🤝",
+    headline: "Open to Collaboration",
+    body: `I warmly welcome academic collaborations! 🌏 If you are working on neural signal decoding, multimodal emotion recognition, brain–computer interfaces, or related topics, please feel free to reach out — I'd love to connect and explore ideas together. ✉️`,
+  },
 
   // ── News ────────────────────────────────────────────────
   news: [
@@ -63,7 +68,7 @@ const PROFILE = {
     },
     {
       date: "2026.04",
-      type: "admission",   // admission | paper | award | other
+      type: "admission",
       content: `Admitted to the <strong>Ph.D. program at Zhejiang University, College of Artificial Intelligence</strong>. Incoming Fall 2026. 🎉`,
     },
     {
@@ -89,7 +94,6 @@ const PROFILE = {
   ],
 
   // ── Publications ────────────────────────────────────────
-  // areas: group papers by research area
   publicationAreas: [
     {
       id: "visual-decoding",
@@ -110,40 +114,40 @@ const PROFILE = {
   publications: {
     "vieeg": {
       title: "ViEEG: Hierarchical Visual Neural Representation for EEG Brain Decoding",
-      authors: ["Minxu Liu", "Donghai Guan", "Chuhang Zheng", "Chunwei Tian", "Jie Wen", "Qi Zhu"],    // bold the first matching "Minxu Liu"
+      authors: ["Minxu Liu", "Donghai Guan", "Chuhang Zheng", "Chunwei Tian", "Jie Wen", "Qi Zhu"],
       venue: "ICML 2026",
       venueFull: "International Conference on Machine Learning (ICML) 2026",
-      venueType: "ccfa",   // ccfa | ccfb | q1 | other
-      status: "accepted",  // accepted | review | submitted
+      venueType: "ccfa",
+      status: "accepted",
       period: "Dec 2024 – Apr 2025",
       abstract: "Semantically segments visual images into a contour → foreground → full-image hierarchy to mirror the brain's layered visual understanding. Reconstructs hierarchical visual information via diffusion models. Achieves a landmark zero-shot image retrieval improvement on large-scale neural decoding benchmarks (26% → 40%).",
       links: {
         arxiv: "https://arxiv.org/abs/2505.12408",
       },
-      image: "assets/images/papers/ViEEG.png",  // optional: paper teaser image
+      image: "assets/images/papers/ViEEG.png",
       emoji: "🧠",
     },
     "vista": {
       title: "VISTA: Dynamic Spatial-Temporal Asynchrony for EEG Visual Decoding",
       authors: ["Minxu Liu", "Donghai Guan", "Chuhang Zheng", "Weitao You"],
-      venue: "",
-      venueFull: "",
+      venue: "KDD 2026",
+      venueFull: "SIGKDD Conference on Knowledge Discovery and Data Mining (KDD) 2026",
       venueType: "ccfa",
       status: "review",
       period: "Apr 2025 – Aug 2025",
       abstract: "Disentangles visual-stimulus-evoked EEG into fine-grained visual and coarse-grained semantic understanding. Models spatiotemporal dynamic asynchrony in both temporal and spatial dimensions, providing interpretability for EEG-based brain visual decoding.",
       links: {
         OpenReview: "https://openreview.net/forum?id=IajjifoLwo",
-        },
+      },
       image: "",
       emoji: "⚡",
     },
     "eeg2vision": {
       title: "EEG Spatial-Temporal Topology Network for Brain Visual Decoding",
       authors: ["Minxu Liu", "et al."],
-      venue: "",
-      venueFull: "",
-      venueType: "",
+      venue: "IEEE TSMCA",
+      venueFull: "IEEE Transactions on Systems, Man, and Cybernetics: Systems (JCR Q1, IF 8.7)",
+      venueType: "q1",
       status: "review",
       period: "Jul 2024 – Dec 2024",
       abstract: "Introduces topological connectivity to explicitly model brain topology strength under visual stimuli. Proposes a soft alignment strategy to bridge the heterogeneity between EEG and vision-language model representations. Designs a task-oriented disentanglement module for simultaneous coarse-grained recognition and fine-grained reconstruction.",
@@ -182,9 +186,9 @@ const PROFILE = {
     "taffc": {
       title: "Multi-Scale Topology Representation for Interpretable EEG Emotion Recognition",
       authors: ["Minxu Liu", "et al."],
-      venue: "",
-      venueFull: "",
-      venueType: "",
+      venue: "IEEE TAFFC",
+      venueFull: "IEEE Transactions on Affective Computing (JCR Q1, IF 9.8)",
+      venueType: "q1",
       status: "review",
       period: "Jan 2024 – Jun 2024",
       abstract: "Introduces expert-prior brain functional partitioning to construct multi-level graph neural networks, capturing multi-scale global brain region and local functional partition topological connectivity, learning biologically interpretable brain networks.",
@@ -233,18 +237,18 @@ const PROFILE = {
 
   // ── Awards ──────────────────────────────────────────────
   awards: [
-    { name: "Outstanding Graduate Student — NUAA",          date: "2026.04", level: "University",    icon: "🏅" },
-    { name: "First-Class Graduate Scholarship — NUAA × 3",  date: "2023–2026", level: "University",  icon: "🏆" },
-    { name: "Zhejiang Provincial Government Scholarship",   date: "2022.10", level: "Province",      icon: "🥇" },
-    { name: "\"JianXing Cup\" Innovation Contest — 2nd Prize", date: "2025.08", level: "Province",   icon: "🥈" },
+    { name: "Outstanding Graduate Student — NUAA",              date: "2026.04", level: "University",    icon: "🏅" },
+    { name: "First-Class Graduate Scholarship — NUAA × 3",      date: "2023–2026", level: "University",  icon: "🏆" },
+    { name: "Zhejiang Provincial Government Scholarship",        date: "2022.10", level: "Province",      icon: "🥇" },
+    { name: "\"JianXing Cup\" Innovation Contest — 2nd Prize",  date: "2025.08", level: "Province",      icon: "🥈" },
     { name: "MCM/ICM — Meritorious Winner (International 1st)", date: "2021.11", level: "International", icon: "🌏" },
     { name: "13th China Service Outsourcing Contest — National 3rd", date: "2022.05", level: "National", icon: "🥉" },
-    { name: "National Mathematical Modeling — Zhejiang 3rd", date: "2021.06", level: "Province",    icon: "📐" },
-    { name: "Outstanding Graduate — ZJUT",                  date: "2023.06", level: "University",   icon: "⭐" },
-    { name: "Outstanding Bachelor's Thesis — ZJUT",         date: "2023.06", level: "University",   icon: "📝" },
-    { name: "Outstanding Youth League Member — NUAA",       date: "2024.04", level: "University",   icon: "🌟" },
-    { name: "Outstanding Youth League Member — ZJUT × 3",  date: "2020–2022", level: "University",  icon: "🌟" },
-    { name: "Second-Class Academic Scholarship — ZJUT × 2", date: "2020–2021", level: "University", icon: "📚" },
+    { name: "National Mathematical Modeling — Zhejiang 3rd",    date: "2021.06", level: "Province",      icon: "📐" },
+    { name: "Outstanding Graduate — ZJUT",                       date: "2023.06", level: "University",   icon: "⭐" },
+    { name: "Outstanding Bachelor's Thesis — ZJUT",              date: "2023.06", level: "University",   icon: "📝" },
+    { name: "Outstanding Youth League Member — NUAA",            date: "2024.04", level: "University",   icon: "🌟" },
+    { name: "Outstanding Youth League Member — ZJUT × 3",       date: "2020–2022", level: "University",  icon: "🌟" },
+    { name: "Second-Class Academic Scholarship — ZJUT × 2",     date: "2020–2021", level: "University",  icon: "📚" },
   ],
 
 };
